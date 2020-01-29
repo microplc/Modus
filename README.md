@@ -1,36 +1,35 @@
 # Modus
 
-Small Arduino library for mode control.
+用于模式控制的很小 Arduino 库。
 
-**Tested on an Arduino Due only.**
+**仅在 Arduino Due 测试过**
 
-## Instructions
+## 介绍
 
-Include the library in your sketch:
+引入头文件到你的代码
 
     #include <Modus.h>
 
-### Constrctor
+### 结构
 
-Just created a Modus object with the number of modes you need.
+仅仅需要创建带有模式个数参数的 Modus 对象即可。
 
-This creates 4 Modes, plus Mode 0, which is the default mode on start-up.
+下面代码创建 4 个 Modes，但是 Mode 0 是启动默认模式。
 
     Modus modes(4);
 
-### Functions
+### 函数共4个
 
-Modus has 4 functions.
 
 #### mode()
 
-Returns the current mode, you can compare modes using the corresponding numbers or set some #defines like in the examples.
+返回当前模式。可以比较数字也可以像例子中一样比较预定义#defines。
 
     modes.mode() == 4 // true if the current mode is Mode number 4, false otherwise.
 
 #### set(mode)
 
-Defines the current mode, you can change to any valid Mode, invalid Modes will be ignored.
+设置当前模式，不正确的模式将被忽略。
 
     modes.set(10); // is ignored since there's only Modes 0 to 4.
     modes.set(2); // Changes to Mode 2.
@@ -39,12 +38,12 @@ Defines the current mode, you can change to any valid Mode, invalid Modes will b
 
 #### status(mode)
 
-Compares the function parameter to the current Mode, returns true if they are the same, false otherwise.
+同当前激活模式作比较，返回 true 或 false 。
 
     modes.status(1); // Returns true if 1 is the current active Mode.
 
 #### state(mode)
 
-The same as status(mode), but returns HIGH/LOW instead of true/false.
+与 status(mode) 相似，但返回 HIGH/LOW 。
 
     modes.status(1); // Returns HIGH if 1 is the current active Mode.
